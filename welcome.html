@@ -8,15 +8,15 @@
 	<style>
 		:root {
 			--max-width: 1024px;
-			--foreground-color: black;
-			--background-color: rgb(255, 255, 255);
-			
+			--foreground-rgb: 0, 0, 0;
+			--background-rgb: 255, 255, 255;
+			--font-sans: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 		}
 		
 		@media (prefers-color-scheme: dark) {
 			:root {
-				--foreground-color: rgb(255, 255, 255);
-				--background-color: #1B1C1D;
+				--foreground-rgb: 255, 255, 255;
+				--background-rgb: 27, 28, 29;
 			}
 		}
 		
@@ -33,7 +33,9 @@
 		}
 		
 		body {
-			font-family: sans-serif;
+			color: rgb(var(--foreground-rgb));
+			background-color: rbg(var(--background-rgb));
+			font-family: var(--font-sans);
 			font-style: normal;
 		}
 		
@@ -48,7 +50,7 @@
 		
 		a {
 			text-decoration: none;
-			color: var(--foreground-color);
+			color: rgb(var(--foreground-rgb));
 		}
 		
 		.welcome {
@@ -66,14 +68,25 @@
 			width: var(--max-width);
 		}
 		
-		.grid a {
+		.card {
 			padding: 1rem;
 			border-radius: 12px;
-			border: 1px solid rgba(var(--foreground-color), 0.2);
+			border: 1px solid rgba(var(--foreground-rgb), 0.15);
+			background: rgba(var(--foreground-rgb), 0);
+			transition: background 200ms, border 200ms;
 		}
 		
-		.grid h2 {
+		.card:hover {
+			border: 1px solid rgba(var(--foreground-rgb), 0.2);
+			background: rgba(var(--foreground-rgb), 0.05);
+		}
+		
+		.card h2 {
 			margin-bottom: 0.8rem;
+		}
+		
+		.card p {
+			line-height: 1.5;
 		}
 		
 		/* Mobile */
@@ -98,21 +111,21 @@
 			Image
 		</div>
 		<div class="grid">
-			<a href="/">
-				<h2>Title</h2>
-				<p>Description</p>
+			<a href="/" class="card">
+				<h2>Guides</h2>
+				<p>Get started with the Hanami Guides</p>
 			</a>
-			<a href="/">
-				<h2>Title</h2>
-				<p>Description</p>
+			<a href="/" class="card">
+				<h2>Docs</h2>
+				<p>Learn more through the API Docs</p>
 			</a>
-			<a href="/">
-				<h2>Title</h2>
-				<p>Description</p>
+			<a href="/" class="card">
+				<h2>Code</h2>
+				<p>Contribute to the Source Code</p>
 			</a>
-			<a href="/">
-				<h2>Title</h2>
-				<p>Description</p>
+			<a href="/" class="card">
+				<h2>Forum</h2>
+				<p>Join the conversation on the forums</p>
 			</a>
 		</div>
 	</main>
