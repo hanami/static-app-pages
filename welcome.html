@@ -10,13 +10,19 @@
 			--max-width: 1024px;
 			--foreground-rgb: 0, 0, 0;
 			--background-rgb: 255, 255, 255;
+			--card-border-rgb: 200, 200, 200;
+			--card-background-rgb: 100, 100, 100;
 			--font-sans: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+			--gradient: radial-gradient(circle at 50% 133%, rgba(255,202,212,1) 0%, rgba(255,202,212,0) 50%);
 		}
 		
 		@media (prefers-color-scheme: dark) {
 			:root {
 				--foreground-rgb: 255, 255, 255;
 				--background-rgb: 27, 28, 29;
+				--card-border-rgb: 200, 200, 200;
+				--card-background-rgb: 100, 100, 100;
+				--gradient: radial-gradient(circle at 50% 133%, rgba(255,73,108,1) 0%, rgba(255,73,108,0) 50%);
 			}
 		}
 		
@@ -35,7 +41,7 @@
 		
 		body {
 			color: rgb(var(--foreground-rgb));
-			background: rgb(var(--background-rgb));
+			background: var(--gradient) rgb(var(--background-rgb));
 			font-family: var(--font-sans);
 			font-style: normal;
 		}
@@ -44,7 +50,7 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			padding: 2rem 6rem;
+			padding: 2rem 8vw;
 			min-height: 100vh;
 		}
 		
@@ -56,7 +62,7 @@
 		.welcome {
 			display: flex;
 			flex-direction: column;
-			gap: 1vh;
+			gap: 2vh;
 			justify-content: center;
 			flex-grow: 3;
 			align-items: center;
@@ -67,8 +73,8 @@
 		
 		.welcome .logo {
 			display: block;
-			max-width: 120px;
-			max-height: 120px;
+			width: 120px;
+			height: 120px;
 		}
 		
 		.welcome h1 {
@@ -88,14 +94,13 @@
 		.card {
 			padding: 1rem;
 			border-radius: 12px;
-			border: 1px solid rgba(var(--foreground-rgb), 0.15);
-			background: rgba(var(--foreground-rgb), 0);
+			border: 1px solid rgba(var(--card-border-rgb), 0.3);
+			background: rgba(var(--card-background-rgb), 0);
 			transition: background 200ms, border 200ms;
 		}
 		
 		.card:hover {
-			border: 1px solid rgba(var(--foreground-rgb), 0.2);
-			background: rgba(var(--foreground-rgb), 0.05);
+			background: rgba(var(--card-background-rgb), 0.05);
 		}
 		
 		.card h2 {
@@ -115,9 +120,33 @@
 		
 		/* Mobile */
 		@media (max-width: 700px) {
+			
+			.welcome {
+				justify-content: top;
+				flex-grow: 0;
+				margin-bottom: 4rem;
+			}
+			
+			.welcome .logo {
+				width: 90px;
+				height: 90px;
+			}
+			
+			.welcome h1 {
+				font-size: 2rem;	
+			}
+			
 			.grid {
 				grid-template-columns: 1fr;
 				row-gap: 20px;
+			}
+		}
+		
+		/* Tablet and Smaller Desktop */
+		@media (min-width: 701px) and (max-width: 1120px) {
+			.grid {
+				grid-template-columns: repeat(2, 1fr);
+				gap: 20px;
 			}
 		}
 		
@@ -125,6 +154,15 @@
 			html {
 				color-scheme: dark;
 			}
+			.card {
+				border: 1px solid rgba(var(--card-border-rgb), 0.15);
+				background: rgba(var(--card-background-rgb), 0);
+			}
+			
+			.card:hover {
+				background: rgba(var(--card-background-rgb), 0.1);
+			}
+			
 		}
 		
 	</style>
